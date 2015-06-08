@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configure>
+	<hosts>
+		<host>
+			<host_name>slave_253.135</host_name>
+			<ip_address>192.168.253.135</ip_address>
+		</host>
+		
+		<host>
+			<host_name>slave_253.136</host_name>
+			<ip_address>192.168.253.136</ip_address>
+		</host>
+		
+		<host>
+			<host_name>slave_253.137</host_name>
+			<ip_address>192.168.253.137</ip_address>
+		</host>
+		
+		<host>
+			<host_name>slave_253.138</host_name>
+			<ip_address>192.168.253.138</ip_address>
+		</host> 
+	</hosts>
+	
+	<nagios_admin>
+		<person>
+			<name>kylin_admin</name>
+			<email>Kylin@admin.com</email>
+			<tel>123admin</tel>
+		</person>
+	</nagios_admin>
+	
+	<emergency_contact>
+		<person>
+			<name>kylin</name>
+			<email>Kylin@1.com</email>
+			<tel>123K</tel>
+		</person>
+		
+		<person>
+			<name>Tom</name>
+			<email>Tom@1.com</email>
+			<tel>123T</tel>
+		</person>
+	</emergency_contact>
+	
+	<normal_contact>
+		<person>
+			<name>normal_kylin</name>
+			<email>normal_Kylin@1.com</email>
+			<tel>123K</tel>
+		</person>
+		
+		<person>
+			<name>normal_Tom</name>
+			<email>normal_Tom@1.com</email>
+			<tel>123T</tel>
+		</person>
+	</normal_contact>
+	
+	<emergency_service>
+		<service> 
+			<service_name>check_load</service_name>
+			<service_name>check_mem</service_name>
+			<service_name>check_cpu</service_name>
+			<service_name>check_net</service_name>
+			<service_name>check_mem</service_name>
+		</service>
+
+	</emergency_service>
+	
+	<normal_service>
+		<service> 
+			<service_name>check_users</service_name>
+			<service_name>check_disk</service_name>
+			<service_name>check_zombie_procs</service_name>
+			<service_name>check_total_procs</service_name>
+			<service_name>check_open_file</service_name>
+			<service_name>check_io</service_name>
+			<service_name>check_socket</service_name>
+			<service_name>check_uptime</service_name>
+		</service>
+	</normal_service>
+	
+</configure>
