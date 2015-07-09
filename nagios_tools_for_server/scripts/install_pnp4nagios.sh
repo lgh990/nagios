@@ -136,6 +136,7 @@ EOF
 show_head
 echo "Configuring pnp4nagios.........."
 show_tail
+cd $NAGIOS_TOOLS_DIR/scripts
 sh configure_pnp4nagios.sh
 
 rm -rf $NAGIOS_INSTALL_DIR/pnp4nagios/share/install.php

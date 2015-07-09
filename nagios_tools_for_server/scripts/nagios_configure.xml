@@ -2,59 +2,37 @@
 <configure>
 	<hosts>
 		<host>
-			<host_name>slave_253.135</host_name>
-			<ip_address>192.168.253.135</ip_address>
+			<host_name>slave_1.139</host_name>
+			<ip_address>192.168.1.139</ip_address>
 		</host>
 		
 		<host>
-			<host_name>slave_253.136</host_name>
-			<ip_address>192.168.253.136</ip_address>
+			<host_name>slave_1.204</host_name>
+			<ip_address>192.168.1.204</ip_address>
 		</host>
-		
-		<host>
-			<host_name>slave_253.137</host_name>
-			<ip_address>192.168.253.137</ip_address>
-		</host>
-		
-		<host>
-			<host_name>slave_253.138</host_name>
-			<ip_address>192.168.253.138</ip_address>
-		</host> 
 	</hosts>
 	
 	<nagios_admin>
 		<person>
 			<name>kylin_admin</name>
-			<email>Kylin@admin.com</email>
-			<tel>123admin</tel>
+			<email>kylinlingh@foxmail.com</email>
+			<tel>15602235484</tel>
 		</person>
 	</nagios_admin>
 	
 	<emergency_contact>
 		<person>
 			<name>kylin</name>
-			<email>Kylin@1.com</email>
-			<tel>123K</tel>
+			<email>kylinlingh@foxmail.com</email>
+			<tel>15602235484</tel>
 		</person>
+	</emergency_contact>	
 		
-		<person>
-			<name>Tom</name>
-			<email>Tom@1.com</email>
-			<tel>123T</tel>
-		</person>
-	</emergency_contact>
-	
 	<normal_contact>
 		<person>
 			<name>normal_kylin</name>
 			<email>normal_Kylin@1.com</email>
 			<tel>123K</tel>
-		</person>
-		
-		<person>
-			<name>normal_Tom</name>
-			<email>normal_Tom@1.com</email>
-			<tel>123T</tel>
 		</person>
 	</normal_contact>
 	
@@ -66,7 +44,6 @@
 			<service_name>check_net</service_name>
 			<service_name>check_mem</service_name>
 		</service>
-
 	</emergency_service>
 	
 	<normal_service>
