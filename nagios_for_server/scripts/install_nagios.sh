@@ -172,9 +172,10 @@ function Configure_Nagios {
     sh configure_commands.sh
     sh install_plugins.sh
     sh install_pnp4nagios.sh
+    chmod +x reconfigure.sh
     
     NAGIOS_CONFIG_DIR=/usr/local/nagios_configure
-    if [[ -d $NAGIOS_CONFIG_DIR ]];
+    if [[ -d $NAGIOS_CONFIG_DIR ]]; then
         rm -rf $NAGIOS_CONFIG_DIR
     else
         mkdir -p $NAGIOS_CONFIG_DIR
