@@ -11,7 +11,9 @@
 ###############################################################
 
 . /etc/rc.d/init.d/functions
-GLOBAL_DIRECTORY=`pwd`
+
+echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_directory.txt
+source ~/global_directory.txt
 
 SCRIPTS_DIR=$GLOBAL_DIRECTORY/nagios_for_server/scripts
 NAGIOS_INSTALL_DIR=/usr/local

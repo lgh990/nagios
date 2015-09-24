@@ -172,7 +172,14 @@ function Configure_Nagios {
     sh configure_commands.sh
     sh install_plugins.sh
     sh install_pnp4nagios.sh
-
+    
+    NAGIOS_CONFIG_DIR=/usr/local/nagios_configure
+    if [[ -d $NAGIOS_CONFIG_DIR ]];
+        rm -rf $NAGIOS_CONFIG_DIR
+    else
+        mkdir -p $NAGIOS_CONFIG_DIR
+        cp -rf $PACKAGES_DIR/scripts $NAGIOS_CONFIG_DIR
+    fi
     echo -e "\e[1;32mNagios configuration complte\e[0m"
 }
 
@@ -214,11 +221,10 @@ function Checkup {
     else
         action "Nagios service on: " /bin/false
     fi 
-
+    
+    rm -f ~/global_directory.txt
     echo -e "\e[1;32mNagios checking complete.\e[0m"
 }
-
-
 
 #Call the functions
 Prepare_Env
@@ -231,4 +237,3 @@ Install_Nrpe
 Configure_Nagios
 Authorizate
 Checkup
-
