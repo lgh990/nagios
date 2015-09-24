@@ -9,7 +9,9 @@
 + 在安装的开始要进行一次输入，输入你登陆nagios的web界面的账号信息
 
 ### 被监控端
-+ 运行安装命令即可：wget -qO- https://raw.github.com/Kylinlin/nagios/master/setup_for_client.sh | sh -x
++ 运行安装命令来下载项目：wget -qO- https://raw.github.com/Kylinlin/nagios/master/setup_for_client.sh | sh -x
++ 手动运行文件nagios/nagios_for_client/scripts/install_nagios.sh文件来进行安装
++ 在安装的开始要进行一次输入，输入远程监控主机的ip地址，多个ip地址之间用逗号隔开
 
 ## 安装注意事项
 + 不管是在监控端还是被监控端安装，都会完整下载整个github仓库，实际上会浪费一些空间
