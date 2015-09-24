@@ -9,7 +9,5 @@ NAGIOS_INSTALL_DIR=/usr/local
 systemctl stop nagios.service
 cd $NAGIOS_INSTALL_DIR
 rm -rf nagios
-rm -rf pnp4nagios
-rm -rf pnp4nagios-0.6.25
 rm -rf Sys-Statistics-Linux-0.66
 

@@ -166,19 +166,11 @@ function Configure_Nagios {
     gcc -g nagios_configure.c -o nagios_configure -I /usr/local/include/libxml2/ -lxml2 > /dev/null
 	./nagios_configure 
 	
-    #Run each configuration script.
-    
+    #Run each configuration script. 
     sh configure_templates.sh
-    
- #   sh configure_contacts.sh
-    sh configure_nagios-cfg.sh
-  #  sh configure_templates.sh
-  #  sh configure_timeperiods.sh
-    sh create_hosts-cfg.sh
-    sh create_services-dir.sh
+    sh configure_host_and_services.sh
     sh configure_commands.sh
-    sh configure_localhost.sh
-    sh install_linux_plugin.sh
+    sh install_plugins.sh
     sh install_pnp4nagios.sh
 
     echo -e "\e[1;32mNagios configuration complte\e[0m"

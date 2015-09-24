@@ -11,6 +11,8 @@
 ###############################################################
 
 NAGIOS_INSTALL_DIR=/usr/local
+
+HOSTS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/objects/hosts.cfg
 NAGIOS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/nagios.cfg
 SERVICES_DIR=$NAGIOS_INSTALL_DIR/nagios/etc/objects/services
 EMERGENCY_SERVICES_CFG=$SERVICES_DIR/emergency_services.cfg
@@ -73,9 +75,7 @@ function Configure_Services {
         echo >>$EMERGENCY_SERVICES_CFG
     done
     
-    show_head
     echo "Creating normal_services.cfg.........."
-    show_tail
     exec <normal_services.list
     if [[ !NORMAL_SERVICES_CFG ]]
     then
@@ -183,6 +183,54 @@ EOF
 
 }
 
+function Configure_Hosts {
+    echo -e "\e[1;33mConfiguring file: hosts.cfg...\e[0m"
+    if [[ -f $HOSTS_CFG ]]; then
+        mv $HOSTS_CFG $HOSTS_CFG.bak
+    else
+        touch $HOSTS_CFG
+    fi
+    exec <hosts.list
+    while read line
+    do
+        echo 'define host {' >>$HOSTS_CFG
+        echo '		use				linux-server'>>$HOSTS_CFG
+        echo "		host_name			`echo $line|awk '{print $1}'`">>$HOSTS_CFG
+        echo "		alias				`echo $line|awk '{print $1}'`">>$HOSTS_CFG
+        echo "		address				`echo $line|awk '{print $2}'`">>$HOSTS_CFG
+        echo "}">>$HOSTS_CFG
+        echo >>$HOSTS_CFG
+    done
+
+    LINE_OF_HOST_LIST=`cat hosts.list|wc -l`
+    >tmp.host
+    exec <hosts.list
+    i=1
+    while read line
+    do
+        if [ $i -eq $LINE_OF_HOST_LIST ]
+        then
+            echo -n "`echo $line|awk '{print $1}'`">>tmp.host
+        else
+            echo -n "`echo $line|awk '{print $1}'`",>>tmp.host
+        fi
+        ((i++))
+    done
+
+    members=`head -1 tmp.host`
+    
+cat >>$HOSTS_CFG<<EOF
+
+define hostgroup{
+		hostgroup_name			remote-linux-servers
+		alias				Remote Linux Servers
+		members				$members
+}
+EOF
+
+}
+
 Configure_Nagios
 Configure_Localhost
 Configure_Services
+Configure_Hosts

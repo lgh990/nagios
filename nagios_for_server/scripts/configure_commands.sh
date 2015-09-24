@@ -1,34 +1,36 @@
 #!/bin/bash
-#Arthur:		kylinlin
-#Begin date:	2015/6/1
-#End date:		2015/6/1
-#Contact email:	kylinlingh@foxmail.com
-#Usage:			Create the host.cfg file
-#Attention:		The file host.list can not has one or more empty row, or there will be something wrong.
+###############################################################
+#File Name      :   configure_commands.sh
+#Arthor         :   kylin
+#Created Time   :   Thu 24 Sep 2015 02:30:29 PM CST
+#Email          :   kylinlingh@foxmail.com
+#Blog           :   http://www.cnblogs.com/kylinlin/
+#Github         :   https://github.com/Kylinlin
+#Version        :
+#Description    :
+###############################################################
 
 NAGIOS_INSTALL_DIR=/usr/local
-
 COMMANDS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/objects/commands.cfg
 
-function show_head(){
-	echo $'\n++++++++++++++++++++++++BEGIN++++++++++++++++++++++++++++++++++'
-}
+function Configure_Commands {
+    echo -e "\eConfiguring commands...\e[0m"
+    if [[ -f $COMMANDS_CFG.bak ]]; then
+        rm -f $COMMANDS_CFG
+        mv $COMMANDS_CFG.bak $COMMANDS_CFG
+    else
+        cp $COMMANDS_CFG $COMMANDS_CFG.bak
+    fi
 
-function show_tail(){
-	echo '++++++++++++++++++++++++END++++++++++++++++++++++++++++++++++'
-}
-
-show_head
-echo "Configuring commands.cfg.........."
-show_tail
-cp $COMMANDS_CFG $COMMANDS_CFG.ori
-echo '#configure command check_nrpe' >>$COMMANDS_CFG
-echo 'define command{ ' >>$COMMANDS_CFG
-echo 'command_name		check_nrpe'>>$COMMANDS_CFG
-echo 'command_line		\$USER1\$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$'>>$COMMANDS_CFG
-echo '}'>>$COMMANDS_CFG
+    echo '#configure command check_nrpe' >>$COMMANDS_CFG
+    echo 'define command{ ' >>$COMMANDS_CFG
+    echo 'command_name      check_nrpe'>>$COMMANDS_CFG
+    echo 'command_line      \$USER1\$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$'>>$COMMANDS_CFG
+    echo '}'>>$COMMANDS_CFG
 
 cat >>$COMMANDS_CFG<<EOF
+
+#Add my commands
 define command{
         command_name   linux_cpu_stats
         command_line   \$USER1\$/check_linux_stats.pl -C -w 100 -s 5
@@ -74,3 +76,7 @@ define command{
         command_line   \$USER1\$/check_linux_stats.pl -P -w 2000 -c 3000
 }
 EOF
+
+}
+
+Configure_Commands
