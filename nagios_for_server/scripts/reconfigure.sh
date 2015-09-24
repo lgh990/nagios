@@ -11,7 +11,7 @@
 ###############################################################
 
 . /etc/rc.d/init.d/functions
-source ~/global_directory.txt
+GLOBAL_DIRECTORY=`pwd`
 
 SCRIPTS_DIR=$GLOBAL_DIRECTORY/nagios_for_server/scripts
 NAGIOS_INSTALL_DIR=/usr/local
