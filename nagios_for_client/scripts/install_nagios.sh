@@ -23,21 +23,26 @@ NRPE_VERSION_CHECK="NRPE v2.15"
 
 NRPE_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/nrpe.cfg
 
+function Get_Informations {
+    echo -n -e "\e[1;35mEnter the ip address for your remote server: \e[0m"
+    read HOST_ADDRESS
+}
+
 function Prepare_Env {
     echo -e "\e[1;33mInstall necessary tools.\e[0m"
 
-    yum install net-tools -y
-    yum install lsof -y
-    yum install gcc -y
-    yum install glibc -y
-    yum install glibc-common -y
-    yum install gd -y
-    yum install gd-devel -y
-    yum install openssl -y
-    yum install openssl-devel -y
-    yum install sysstat -y
-    yum install ntp -y 
-    yum install ntpdate -y
+    yum install net-tools -y > /dev/null
+    yum install lsof -y > /dev/null
+    yum install gcc -y > /dev/null
+    yum install glibc -y > /dev/null
+    yum install glibc-common -y > /dev/null
+    yum install gd -y > /dev/null
+    yum install gd-devel -y > /dev/null
+    yum install openssl -y > /dev/null
+    yum install openssl-devel -y > /dev/null
+    yum install sysstat -y > /dev/null
+    yum install ntp -y > /dev/null
+    yum install ntpdate -y > /dev/null
 }
 
 function Synchronize_Time {
@@ -51,10 +56,10 @@ function Synchronize_Time {
 
 function Configure_Firewall {
     echo -e "\e[1;33mConfigure firewall\e[0m"
-    firewall-cmd --add-service=http
-    firewall-cmd --permanent --add-service=http
-    firewall-cmd --zone=public --add-port=5666/tcp --permanent
-    firewall-cmd --reload
+    firewall-cmd --add-service=http > /dev/null
+    firewall-cmd --permanent --add-service=http > /dev/null
+    firewall-cmd --zone=public --add-port=5666/tcp --permanent > /dev/null
+    firewall-cmd --reload > /dev/null
 }
 
 function Add_User {
@@ -70,11 +75,11 @@ function Install_Nagios {
     sh uninstall_nagios.sh
     echo -e "\e[1;33mInstall plugins for nagios\e[0m"
     cd $PACKAGES_DIR/packages
-    tar -xf $NAGIOS_PLUGIN_VERSION.tar.gz -C /usr/local/src
+    tar -xf $NAGIOS_PLUGIN_VERSION.tar.gz -C /usr/local/src > /dev/null
     cd /usr/local/src/$NAGIOS_PLUGIN_VERSION
-    ./configure --with-nagios-user=nagios --with-nagios-group=nagios
-    make
-    make install 
+    ./configure --with-nagios-user=nagios --with-nagios-group=nagios > /dev/null
+    make > /dev/null
+    make install > /dev/null
 }
 
 function Install_Nrpe {
@@ -87,12 +92,12 @@ function Install_Nrpe {
      --with-nagios-user=nagios \
      --with-nagios-group=nagios \
      --enable-command-args \
-     --enable-ssl
+     --enable-ssl > /dev/null
     
-    make all
-    make install-plugin
-    make install-daemon
-    make install-daemon-config
+    make all > /dev/null
+    make install-plugin > /dev/null
+    make install-daemon > /dev/null
+    make install-daemon-config > /dev/null
 }
 
 function Write_Script_For_Nrpe {
@@ -169,7 +174,7 @@ function Configure_Nagios {
 function Startup {
     echo -e "\e[1;33mStartup nrpe\e[0m"
     $NAGIOS_INSTALL_DIR/nagios/bin/nrpe -c $NRPE_CFG -d
-    systemctl restart nrpe.service
+    systemctl restart nrpe.service > /dev/null
 
     CHECK_NRPE_STATUS=`netstat -tnlp | awk '{print $7}'|grep nrpe`
     if [[ CHECK_NRPE_STATUS != "" ]]
@@ -189,6 +194,7 @@ function Startup {
 
 }
 
+Get_Informations
 Prepare_Env
 Synchronize_Time
 Add_User

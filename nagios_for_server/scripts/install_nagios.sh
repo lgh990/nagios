@@ -173,6 +173,7 @@ function Configure_Nagios {
     sh configure_commands.sh
     sh install_plugins.sh
     sh install_pnp4nagios.sh
+    
     chmod +x reconfigure.sh
     
     NAGIOS_CONFIG_DIR=/usr/local/nagios_configure
@@ -182,6 +183,11 @@ function Configure_Nagios {
         mkdir -p $NAGIOS_CONFIG_DIR
         cp -rf $PACKAGES_DIR/scripts $NAGIOS_CONFIG_DIR
     fi
+    
+    cd $PACKAGES_DIR/scripts
+    rm -rf *.list
+    rm -f tmp.host
+    
     echo -e "\e[1;32mNagios configuration complte\e[0m"
 }
 

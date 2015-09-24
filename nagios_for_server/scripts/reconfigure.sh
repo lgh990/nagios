@@ -12,15 +12,17 @@
 
 . /etc/rc.d/init.d/functions
 
+DIRECTORY=`pwd`
 echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_directory.txt
 source ~/global_directory.txt
 
-SCRIPTS_DIR=$GLOBAL_DIRECTORY/nagios_for_server/scripts
+SCRIPTS_DIR=$GLOBAL_DIRECTORY
 NAGIOS_INSTALL_DIR=/usr/local
 
 function Reconfigure {
     echo -e "\e[1;33mReconfiguring nagios.\e[0m"
-
+    
+    systemctl stop nagios
     #Recompile nagios_configure.c
     cd $SCRIPTS_DIR
     gcc -g nagios_configure.c -o nagios_configure -I /usr/local/include/libxml2/ -lxml2
