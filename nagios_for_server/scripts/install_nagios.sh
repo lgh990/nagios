@@ -18,6 +18,24 @@ NAGIOS_CORE_VERSION=nagios-4.0.8
 NAGIOS_PLUGIN_VERSION=nagios-plugins-2.0.3
 NRPE_VERSION=nrpe-2.15
 
+function Get_Informations {
+    while true; do
+        echo -n -e "\e[1;35mEnter the login name for nagios's website: \e[0m"
+        read LOGIN_NAM
+        echo -n -e "\e[1;35mEnter the login password for nagios's websit: \e[0m"
+        read LOGIN_PASSWD
+        echo -e "\e[1;36m+-------------Here is the information you enter-----------+
+                Username for nagios's website : $LOGIN_NAM
+                Password for nagios's website : $LOGIN_PASSWD
++---------------------------------------------------------+\e[0m"
+        echo -n -e "\e[1;35mConfirm it? [y/n]: \e[0m"
+        read CONFIRM
+        if [[ $CONFIRM == y ]]; then
+            break
+        fi
+    done
+}
+
 function Prepare_Env {
     echo -e "\e[1;33mInstalling necessary softwares...\e[0m"
 
@@ -86,24 +104,7 @@ function Add_User {
 
 function Install_Nagios {
     echo -e "\e[1;33mInstalling nagios...\e[0m"
-    
-    while true; do
-        echo -n -e "\e[1;35mEnter the login name for nagios's website: \e[0m"
-        read LOGIN_NAM
-        echo -n -e "\e[1;35mEnter the login password for nagios's websit: \e[0m"
-        read LOGIN_PASSWD
-        echo -e "\e[1;36m+-------------Here is the information you enter-----------+
-                Username for nagios's website : $LOGIN_NAM
-                Password for nagios's website : $LOGIN_PASSWD
-+---------------------------------------------------------+\e[0m"
-        echo -n -e "\e[1;35mConfirm it? [y/n]: \e[0m"
-        read CONFIRM
-        if [[ $CONFIRM == y ]]; then
-            break
-        fi
-    done
-    
-    
+   
     #First of all, uninstall nagios.
     cd $PACKAGES_DIR/scripts
     sh uninstall_nagios.sh
@@ -228,6 +229,7 @@ function Checkup {
 }
 
 #Call the functions
+Get_Informations
 Prepare_Env
 Synchronizate_Time
 Configure_Firewall
