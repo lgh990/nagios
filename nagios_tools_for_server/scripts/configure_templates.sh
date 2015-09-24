@@ -30,7 +30,7 @@ define service{
         contact_groups                  admins,emergency_contacts_group			
         notification_options            w,u,c,r			; Send notifications about warning, unknown, critical, and recovery events
         notification_interval           60			; Re-notify about service problems every hour
-        notification_period             normalhours			; Notifications can be sent out at normalhours
+        notification_period             24x7			; Notifications can be sent out at normalhours
         register                        0       								
         }
 		

@@ -42,12 +42,14 @@ function Prepare_Env {
     yum install ntp -y > /dev/null
     yum install ntpdate -y > /dev/null
 
-    cd $PACKAGES_DIR/packages
-    tar -xf libxml2-2.7.1.tar.gz -C /usr/local/src > /dev/null
-    cd /usr/local/src/libxml2-2.7.1
-    ./configure > /dev/null
-    make > /dev/null
-    make install > /dev/null
+	if [[ ! -d /usr/local/include/libxml2 ]]; then
+		cd $PACKAGES_DIR/packages
+		tar -xf libxml2-2.7.1.tar.gz -C /usr/local/src > /dev/null
+		cd /usr/local/src/libxml2-2.7.1
+		./configure > /dev/null
+		make > /dev/null
+		make install > /dev/null
+	fi
 }
 
 function Synchronizate_Time {
@@ -131,7 +133,7 @@ function Install_Plugins {
     make > /dev/null
     make install  > /dev/null
     systemctl enable nagios > /dev/null
-    echo -e "\e[1;33mNagios's plugins installation complete.\e[0m"
+    echo -e "\e[1;32mNagios's plugins installation complete.\e[0m"
 } 
 
 function Install_Nrpe {
@@ -162,13 +164,16 @@ function Configure_Nagios {
     #Active the xml configuration file
     cd $PACKAGES_DIR/scripts
     gcc -g nagios_configure.c -o nagios_configure -I /usr/local/include/libxml2/ -lxml2 > /dev/null
-    sh nagios_configure
-
+	./nagios_configure 
+	
     #Run each configuration script.
-    sh configure_contacts.sh
-    sh configure_nagios-cfg.sh
+    
     sh configure_templates.sh
-    sh configure_timeperiods.sh
+    
+ #   sh configure_contacts.sh
+    sh configure_nagios-cfg.sh
+  #  sh configure_templates.sh
+  #  sh configure_timeperiods.sh
     sh create_hosts-cfg.sh
     sh create_services-dir.sh
     sh configure_commands.sh
@@ -185,7 +190,7 @@ function Authorizate {
     sed -i "s#nagiosadmin#$LOGIN_NAM#g" /usr/local/nagios/etc/cgi.cfg
     /etc/init.d/nagios reload 
     systemctl restart nagios.service 
-    echo -e "\e[1;33mAuthorization complte.\e[0m"
+    echo -e "\e[1;32mAuthorization complte.\e[0m"
 }
 
 function Checkup {
