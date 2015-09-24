@@ -11,9 +11,10 @@
 
 function Setup {
     yum install git dos2unix -y > /dev/null
-    #git clone https://github.com/Kylinlin/centos7.git
+    git clone https://github.com/Kylinlin/nagios.git
     cd nagios
     dos2unix nagios_for_client/scripts/*
+    sh nagios_for_client/scripts/install_nagios.sh
 
     DIRECTORY=`pwd`
     echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_directory.txt

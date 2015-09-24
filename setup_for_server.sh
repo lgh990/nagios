@@ -11,7 +11,7 @@
 
 function Setup {
     yum install git dos2unix -y > /dev/null
-    #git clone https://github.com/Kylinlin/centos7.git
+    git clone https://github.com/Kylinlin/nagios.git
     cd nagios
     dos2unix nagios_for_server/scripts/*
 
