@@ -7,7 +7,7 @@
 + 在克隆下来的项目中，修改文件nagios/nagios_for_server/scripts/configure_nagios.xml中的配置选项，分别修改联系人信息和被监控端的信息，还有对服务的分级
 + 手动运行文件nagios/nagios_for_server/scripts/install_nagios.sh文件来进行安装
 + 在安装的过程中要进行一次输入，输入你登陆nagios的web界面的账号信息
-+ 
+
 ### 被监控端
 + 运行安装命令即可：wget -qO- https://raw.github.com/Kylinlin/nagios/master/setup_for_client.sh | sh -x
 
