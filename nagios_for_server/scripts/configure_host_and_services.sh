@@ -102,9 +102,8 @@ function Configure_Localhost {
     if [[ -f $LOCALHOST_CFG.bak ]]; then
         rm -f $LOCALHOST_CFG
         mv $LOCALHOST_CFG.bak $LOCALHOST_CFG
-    else
-        cp $LOCALHOST_CFG $LOCALHOST_CFG.bak
     fi
+    cp $LOCALHOST_CFG $LOCALHOST_CFG.bak
 
     sed -i '46s/linux-servers/linux-servers-localhost/g' $LOCALHOST_CFG
     sed -i '46s/linux-servers/linux-servers-localhost/g' $LOCALHOST_CFG
@@ -187,9 +186,8 @@ function Configure_Hosts {
     echo -e "\e[1;33mConfiguring file: hosts.cfg...\e[0m"
     if [[ -f $HOSTS_CFG ]]; then
         mv $HOSTS_CFG $HOSTS_CFG.bak
-    else
-        touch $HOSTS_CFG
     fi
+    touch $HOSTS_CFG
     exec <hosts.list
     while read line
     do
