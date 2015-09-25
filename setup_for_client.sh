@@ -16,7 +16,7 @@ function Setup {
     dos2unix nagios_for_client/scripts/*
 
     DIRECTORY=`pwd`
-    echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_directory.txt
+    echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_variables.txt
 }
  
 Setup
