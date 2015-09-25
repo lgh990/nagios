@@ -185,10 +185,9 @@ function Configure_Nagios {
     NAGIOS_CONFIG_DIR=/usr/local/nagios_configure
     if [[ -d $NAGIOS_CONFIG_DIR ]]; then
         rm -rf $NAGIOS_CONFIG_DIR
-    else
-        mkdir -p $NAGIOS_CONFIG_DIR
-        cp -rf $PACKAGES_DIR/scripts $NAGIOS_CONFIG_DIR
     fi
+    mkdir -p $NAGIOS_CONFIG_DIR
+    cp -rf $PACKAGES_DIR/scripts $NAGIOS_CONFIG_DIR
        
     echo -e "\e[1;32mNagios configuration complte\e[0m"
 }
