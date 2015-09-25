@@ -21,11 +21,10 @@ function Configure_Contacts_Template {
     echo -e "\e[1;33mConfiguring contacts...\e[0m"
     if [[ -f $CONTACTS_CFG.bak ]]; then
         rm -f $CONTACTS_CFG
-        mv $CONTACTS_CFG.bak $CONTACTS_CFG
     else
         mv $CONTACTS_CFG $CONTACTS_CFG.bak
-        touch $CONTACTS_CFG
     fi
+    touch $CONTACTS_CFG
 
 #Configure admin contacts.
 cat >>$CONTACTS_CFG<<EOF
@@ -168,9 +167,9 @@ function Configure_Timeperiods_Template {
     if [[ -f $TIMEPERIODS_CFG.bak ]]; then
         rm -f $TIMEPERIODS_CFG
         mv $TIMEPERIODS_CFG.bak $TIMEPERIODS_CFG
-    else
-        cp $TIMEPERIODS_CFG $TIMEPERIODS_CFG.bak
     fi
+    cp $TIMEPERIODS_CFG $TIMEPERIODS_CFG.bak
+    
 cat >>$TIMEPERIODS_CFG<<EOF
 
 # 'normalhours' timeperiod definition
@@ -194,9 +193,8 @@ function Configure_Services_Template {
     if [[ -f $TEMPLATES_CFG.bak ]]; then
         rm -f $TEMPLATES_CFG
         mv $TEMPLATES_CFG.bak $TEMPLATES_CFG
-    else
-        cp $TEMPLATES_CFG $TEMPLATES_CFG.bak
     fi
+    cp $TEMPLATES_CFG $TEMPLATES_CFG.bak
 
 cat >>$TEMPLATES_CFG<<EOF
 
