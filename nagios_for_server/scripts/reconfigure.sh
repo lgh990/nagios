@@ -43,6 +43,7 @@ function Reconfigure {
     
     /etc/init.d/nagios reload
     systemctl start nagios.service
+    rm -f ~/global_variables.txt
 }
 
 Reconfigure
