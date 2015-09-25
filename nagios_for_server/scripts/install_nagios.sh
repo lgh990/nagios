@@ -68,6 +68,8 @@ function Prepare_Env {
 		make > /dev/null
 		make install > /dev/null
 	fi
+	
+	systemctl enable httpd.service
 }
 
 function Synchronizate_Time {
