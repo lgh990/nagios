@@ -42,6 +42,7 @@ function Reconfigure {
     fi
     
     /etc/init.d/nagios reload
+    systemctl start nagios.service
 }
 
 Reconfigure
