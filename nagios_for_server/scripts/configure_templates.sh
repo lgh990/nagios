@@ -10,8 +10,8 @@
 #Description    :
 ###############################################################
 
-
 NAGIOS_INSTALL_DIR=/usr/local
+source ~/global_directory.txt
 
 CONTACTS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/objects/contacts.cfg
 TIMEPERIODS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/objects/timeperiods.cfg
@@ -231,4 +231,8 @@ sed -i '91s/admins/admins,emergency_contact_group,normal_contact_group/' $TEMPLA
 
 Configure_Contacts_Template
 Configure_Timeperiods_Template
-Configure_Services_Template
+
+#Only run this function when it isn't reconfigure.
+if [[ $RECONFIGURE == 0 ]]; then
+    Configure_Services_Template
+fi

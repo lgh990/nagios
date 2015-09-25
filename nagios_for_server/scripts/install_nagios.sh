@@ -11,7 +11,7 @@
 ###############################################################
 
 . /etc/rc.d/init.d/functions
-source ~/global_directory.txt
+source ~/global_variables.txt
 
 PACKAGES_DIR=$GLOBAL_DIRECTORY/nagios_for_server
 NAGIOS_CORE_VERSION=nagios-4.0.8

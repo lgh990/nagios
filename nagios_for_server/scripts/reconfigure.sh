@@ -13,7 +13,8 @@
 . /etc/rc.d/init.d/functions
 
 DIRECTORY=`pwd`
-echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_directory.txt
+echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_variables.txt
+echo "export RECONFIGURE=1" >> ~/global_variables.txt
 source ~/global_directory.txt
 
 SCRIPTS_DIR=$GLOBAL_DIRECTORY
