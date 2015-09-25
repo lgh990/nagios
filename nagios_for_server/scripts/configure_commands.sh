@@ -18,9 +18,8 @@ function Configure_Commands {
     if [[ -f $COMMANDS_CFG.bak ]]; then
         rm -f $COMMANDS_CFG
         mv $COMMANDS_CFG.bak $COMMANDS_CFG
-    else
-        cp $COMMANDS_CFG $COMMANDS_CFG.bak
     fi
+    cp $COMMANDS_CFG $COMMANDS_CFG.bak
 
     echo '#configure command check_nrpe' >>$COMMANDS_CFG
     echo 'define command{ ' >>$COMMANDS_CFG
