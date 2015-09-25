@@ -15,7 +15,7 @@
 DIRECTORY=`pwd`
 echo "export GLOBAL_DIRECTORY=$DIRECTORY" > ~/global_variables.txt
 echo "export RECONFIGURE=1" >> ~/global_variables.txt
-source ~/global_directory.txt
+source ~/global_variables.txt
 
 SCRIPTS_DIR=$GLOBAL_DIRECTORY
 NAGIOS_INSTALL_DIR=/usr/local
