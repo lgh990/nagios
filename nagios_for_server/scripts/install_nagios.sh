@@ -178,6 +178,10 @@ function Configure_Nagios {
     
     chmod +x reconfigure.sh
     
+    cd $PACKAGES_DIR/scripts
+    rm -rf *.list
+    rm -f tmp.host
+    
     NAGIOS_CONFIG_DIR=/usr/local/nagios_configure
     if [[ -d $NAGIOS_CONFIG_DIR ]]; then
         rm -rf $NAGIOS_CONFIG_DIR
@@ -185,11 +189,7 @@ function Configure_Nagios {
         mkdir -p $NAGIOS_CONFIG_DIR
         cp -rf $PACKAGES_DIR/scripts $NAGIOS_CONFIG_DIR
     fi
-    
-    cd $PACKAGES_DIR/scripts
-    rm -rf *.list
-    rm -f tmp.host
-    
+       
     echo -e "\e[1;32mNagios configuration complte\e[0m"
 }
 
