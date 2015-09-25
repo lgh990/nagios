@@ -24,9 +24,8 @@ function Configure_Nagios {
     if [[ -f $NAGIOS_CFG.bak ]]; then
         rm -f $NAGIOS_CFG
         mv $NAGIOS_CFG.bak $NAGIOS_CFG
-    else
-        cp $NAGIOS_CFG $NAGIOS_CFG.bak
     fi
+    cp $NAGIOS_CFG $NAGIOS_CFG.bak
     
     #Make nagios to use hosts.cfg to configure hosts, and use files under directory services/ to configure services
     sed -i "34 i cfg_file=/usr/local/nagios/etc/objects/hosts.cfg" $NAGIOS_CFG
