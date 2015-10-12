@@ -15,16 +15,16 @@
 	<nagios_admin>
 		<person>
 			<name>kylin_admin</name>
-			<email>kylinlingh@foxmail.com</email>
-			<tel>15602235484</tel>
+			<email>test@test.com</email>
+			<tel>123456</tel>
 		</person>
 	</nagios_admin>
 	
 	<emergency_contact>
 		<person>
 			<name>kylin</name>
-			<email>kylinlingh@foxmail.com</email>
-			<tel>15602235484</tel>
+			<email>test@test.com</email>
+			<tel>123456</tel>
 		</person>
 	</emergency_contact>	
 		
