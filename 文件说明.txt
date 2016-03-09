@@ -1,0 +1,50 @@
+文件描述：
+  log                    ：该目录用来保存nagios安装过程的日志
+  setup_for_client.sh           : 用来安装nagios客户端的脚本
+  setup_for_server.sh           ：用来安装nagios服务器端的脚本
+	nagios_tools_for_client				：该目录用来保存远程主机安装nagios所需的全部软件和脚本
+    |packages
+      |nagios-plugin-2.03.tar.gz         ：nagios套件中的必备软件
+      |nrpe-2.15.tar.gz              ：nagios套件中的必备软件
+      |Sys-Statistics-Linux-0.66.tar.gz      ：用来支持插件check_linux_stats.pl的运行
+		|plugin										：该目录用来存放nagios的插件
+			|check_linux_stats.pl							：该插件用来检查linux系统的各种状态（内存，IO，CPU等）
+      |check_mysql_health-2.1.9.2.tar.gz        ：该插件用来检查mysql（还没有安装）
+
+
+		scripts										：该目录用来存放安装nagios的脚本
+			|install_nagios.sh							：该脚本用来搭建运行环境和启动安装各种软件
+			|install_plugin.sh						  ：该脚本用来安装check_linux_stats.pl插件
+			|uninstall_nagios.sh							：该脚本用来卸载nagios套件
+
+
+
+
+	nagios_tools_for_server				：该目录用来保存监控端安装nagios所需的全部软件和脚本
+    |packages
+      |libxml2-2.7.1.tar.gz            ：该软件用来支持nagios_configure.c程序来解析nagios_configure.xml文件
+      |nagios-4.0.8.tar.gz             ：nagios套件中的必备软件
+      |nagios-plugin-2.03.tar.gz         ：nagios套件中的必备软件
+      |nrpe-2.15.tar.gz              ：nagios套件中的必备软件
+      |pnp4nagios-0.6.25.tar.gz          ：该软件用来生成nagios监控的图形界面
+      |Sys-Statistics-Linux-0.66.tar.gz      ：用来支持插件check_linux_stats.pl的运行
+
+		|plugin										：该目录用来存放nagios的插件
+			|check_linux_stats.pl							：该插件用来检查linux系统的各种状态（内存，IO，CPU等）
+			|check_mysql_health-2.1.9.2.tar.gz				：该插件用来检查mysql（还没有安装）
+
+		scripts										：该目录用来存放安装nagios的脚本
+			|reconfigure.sh							        ：在使用nagios的过程中，如果配置信息发生了改变，该脚本用来重新配置nagios
+			|configure_commands.sh							：该脚本用来配置commands.cfg文件
+			|configure_pnp4nagios.sh						：该脚本用来在安装pnp4nagios后配置相关文件
+			|configure_templates.sh							：该脚本用来配置templates.cfg文件
+			|install_plugin.sh						      ：该脚本用来安装check_linux_stats.pl插件
+			|install_pnp4nagios.sh							：该脚本用来安装pnp4nagios
+			|nagios_configure.c								  ：该程序用来解析nagios_configure.xml文件，生成相应的临时文件
+			|nagios_configure.xml							  ：该文件用来配置nagios的相关信息
+			|uninstall_nagios.sh							  ：该脚本用来卸载nagios套件
+      |configure_host_and_services.sh
+
+
+
+

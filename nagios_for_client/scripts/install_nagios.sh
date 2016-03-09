@@ -157,7 +157,7 @@ function Configure_Nagios {
     echo "command[check_load]=$NAGIOS_INSTALL_DIR/nagios/libexec/check_load -w 15,10,5 -c 30,25,20">>$NRPE_CFG
     echo "command[check_disk]=$NAGIOS_INSTALL_DIR/nagios/libexec/check_disk -w 20% -c 10% -p /dev/sda1">>$NRPE_CFG
     echo "command[check_zombie_procs]=$NAGIOS_INSTALL_DIR/nagios/libexec/check_procs -w 5 -c 10 -s Z">>$NRPE_CFG
-    echo "command[check_total_procs]=$NAGIOS_INSTALL_DIR/nagios/libexec/check_procs -w 150 -c 200">>$NRPE_CFG
+    echo "command[check_total_procs]=$NAGIOS_INSTALL_DIR/nagios/libexec/check_procs -w 350 -c 500">>$NRPE_CFG
     echo "command[check_mem]=/usr/local/nagios/libexec/check_linux_stats.pl -M -w 100,25 -c 100,50">>$NRPE_CFG
     echo "command[check_cpu]=/usr/local/nagios/libexec/check_linux_stats.pl -C -w 99 -c 100 -s 5">>$NRPE_CFG
     echo "command[check_open_file]=/usr/local/nagios/libexec/check_linux_stats.pl -F -w 10000,250000 -c 15000,350000">>$NRPE_CFG
