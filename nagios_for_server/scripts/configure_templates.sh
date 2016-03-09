@@ -11,7 +11,7 @@
 ###############################################################
 
 NAGIOS_INSTALL_DIR=/usr/local
-source ~/global_directory.txt
+source ~/global_variables.txt
 
 CONTACTS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/objects/contacts.cfg
 TIMEPERIODS_CFG=$NAGIOS_INSTALL_DIR/nagios/etc/objects/timeperiods.cfg
